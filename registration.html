@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+:root {
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgb(166, 202, 193);
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+.form {
+    padding: 10px 20px;
+}
+
+.form h1 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.form-field {
+    margin-bottom: 5px;
+
+}
+
+.form-field label {
+    display: block;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.form-field input {
+    border: solid 2px #f0f0f0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+}
+
+.form-field input:focus {
+    outline: none;
+}
+
+.form-field.error input {
+    border-color: var(--error-color);
+}
+
+.form-field.success input {
+    border-color: var(--success-color);
+}
+
+
+.form-field small {
+    color: var(--error-color);
+}
+
+
+/* button */
+.btn {
+    width: 100%;
+    padding: 3%;
+    background: #007bff;
+    border-bottom: 2px solid #007bff;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background: #0069d9;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- My CSS -->
+    <link rel="stylesheet" href="teacher.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ExWQ52CPmtQP8Cf_JRFINJEkVWNqHxfyOW4aa7G3aWNZkFuHINZGnnp7Dye-ElmL5kzcmjgVlk5MgQsAHa1T4-siD3Ox7pus3aJbaSwo7B0" charset="UTF-8"></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3E3XZ7RL7"></script>
+        
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-Q3E3XZ7RL7');
+
+        </script>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</head>
+  <body>
+      <h1 class="mt-3 text-uppercase">Student registration form</h1>
+        <section class="h-100 ">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                  <div class="card card-registration my-4">
+                    <div class="row g-0">
+                      <div class="col-xl-6 d-none d-xl-block">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                          alt="Sample photo" class="img-fluid"
+                          style="border-top-left-radius: .10rem; border-bottom-left-radius: .25rem;" />
+                      </div>
+
+                  <div class="col-xl-6">
+
+                    <form action="#" onsubmit="formvalidation()"  autocomplete="off" name="myform" id="form">
+
+                      <div class="card-body p-md-5 text-black">
+                       
+                 
+                        <div class="row">
+                 <!-- name -->
+                          <div class="col-md-6 mb-4">
+                            <div class="form-field">
+                              <label for="fname" class="text-dark fs-5">First  Name</label>
+                              <input type="text" id="name" placeholder="Enter Your Name" autocomplete="off">
+                              <small></small>
+                              
+                            </div>
+                          </div>
+
+               <!-- last name -->
+                          <div class="col-md-6 mb-4">
+                            <div class="form-field">
+                              <label for="lname" class="text-dark fs-5">Last Name</label>
+                              <input type="text" id="lname" placeholder="Last Name" autocomplete="off">
+                              <small></small>
+                            </div>
+                          </div>
+                        </div> 
+                             
+          <!-- mother name -->
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div class="form-field">
+                              <label for="mname" class="text-dark fs-5">Mother Name</label>
+                              <input type="text" id="mname" placeholder="Mother Name" autocomplete="off">
+                              <small></small>
+                            </div>
+                          </div> 
+           <!-- father name -->
+                          <div class="col-md-6 mb-4">
+                            <div class="form-field">
+                              <label for="fname" class="text-dark fs-5">Father Name</label>
+                              <input type="text" id="fname" placeholder="Father Name" autocomplete="off">
+                              <small></small> 
+                            </div>
+                          </div>
+                        </div> 
+              <!-- address -->
+                        <div class="col-md-6 mb-4">
+                          <div class="form-field">
+                            <label for="address" class="text-dark fs-5">Address</label>
+                            <input type="text" id="address" placeholder="Address" autocomplete="off">
+                            <small></small>
+                        </div>
+                    </div> 
+               <!-- gender -->
+                          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                    
+                            <h5 class="mb-0 me-4" >Gender: </h5>
+
+                            <div class="form-check form-check-inline mb-0 me-4">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Gender"
+                                value="option1" />
+                              <label class="form-check-label" for="femaleGender">Female</label>
+                            </div>
+
+                            <div class="form-check form-check-inline mb-0 me-4">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Gender"
+                                value="option2" />
+                              <label class="form-check-label" for="maleGender">Male</label>
+                            </div>
+
+                            <div class="form-check form-check-inline mb-0">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Gender"
+                                value="option3" />
+                              <label class="form-check-label" for="otherGender">Other</label>
+                            </div>
+
+                          </div>
+              
+              <!-- state -->
+                          <div class="row">
+                            <div class="col-md-6 mb-4">
+
+                              <select class="select"  name="state">
+                                <option  value="state">State</option>
+                                <option  value="Maharashtra">Maharashtra</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                              
+                              </select>
+                              
+                            </div>
+                <!-- city -->
+        
+                              <div class="col-md-6 mb-4">
+                      
+                                <select class="select">
+                                  <option value="city">City</option>
+                                  <option  value="Pune">Pune</option>
+                                  <option value="Mumbai">Mumbai</option>
+                                  <option value="Kolhapur">Kolhapur</option>
+                                </select>
+
+                              </div>
+                            </div>
+                <!-- birthday -->
+                              <div class="col-md-6 mb-4">
+                                <div class="form-field">
+                                  
+                                <label for="date" class="text-dark fs-5">DOB</label><br >
+                                <input type="date" id="date" name="date" placeholder="DOB" autocomplete="off">
+                              </div>
+                            </div>
+                 <!-- pincode  -->
+                              <div class="form-field mb-4">
+                                
+                                <label for="pin" class="text-dark fs-5">Pincode</label><br>
+                                <input type="number" id="pin" placeholder="Pincode" autocomplete="off">
+                                <small></small>
+                              </div>
+              <!-- mobile -->
+                                <div class="form-field mb-4">
+                                          
+                                  <label for="Mobile" class="text-dark fs-5">Mobile Number</label><br>
+                                  <select style="width:200px ;"  name="Country">
+                                    <option  value="state">Country code</option>
+                                    <option  value="India">India 91+<a><img src="/img/india.png" class="img-fluid " style="height:30px ; width: 30px; " alt="..."></a></option>
+                                    <option value="">US</option>
+                                    <option value="Gujarat">Uk</option>
+                                  
+                                  </select>
+                                  
+                                  <input id="mobile" type="number" placeholder="Enter number" autocomplete="off">
+                                <small></small>
+                                  
+                                </div>
+                       
+                  <!-- email -->
+                                <div class="form-field mb-4 ">
+                                      
+                                  <label for="email" class="text-dark fs-5 mt-10">Email</label><br>
+                                  <input type="email" id="email" placeholder="Enter email" autocomplete="off" class="mb-2">
+                                  <small></small>
+                                </div>
+                    
+                  <!-- button -->
+                            <div class="d-flex justify-content-end pt-3">
+                              <button type="submit" onclick="resetForm()"  class="btn btn-primary btn-lg">Reset all</button>
+                              <button type="submit"  class="btn btn-warning btn-lg ms-2">Submit form</button>
+                            </div>
+                <!-- button -->
+                          </div>
+                        </form>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </div>
+                </section>
+
+                </body>
+                </html>
+                <script >
+                       const  name= document.querySelector('#name');
+                const last = document.querySelector('#lname');
+                const mother = document.querySelector('#mname');
+                const father = document.querySelector('#fname');
+                const add = document.querySelector('#address');
+                const pincode = document.querySelector('#pin');
+                const num = document.querySelector('#mobile');
+                const emai = document.querySelector('#email');
+                const birth = document.querySelector('#date');
+
+                const form = document.querySelector('#form');
+
+                const letter = /^[a-zA-z]*$/;
+
+                const checkUsername = () => {
+
+                    let valid = false;
+
+                    const min = 2,
+                        max = 15;
+
+                    const username = name.value.trim();
+
+                    if (!isRequired(username)) {
+                        showError(name, 'First name cannot be blank.');
+                    } 
+                    if(!username.match(letter)){
+                      showError(name, 'Please type only alphabate.');
+                    }
+                    else if (!isBetween(username.length, min, max)) {
+                        showError(name, `First name must be between ${min} and ${max} characters.`)
+                    } 
+                    else {
+                        showSuccess(name);
+                        valid = true;
+                    }
+                    return valid;
+                };
+                 
+                    const checkUsername1 = () => {
+
+                      let valid = false;
+
+                      const min = 2,
+                          max = 15;
+
+                      const username = last.value.trim();
+
+                      if (!isRequired(username)) {
+                          showError(last, 'Last name cannot be blank.');
+                      } 
+                      if(!username.match(letter)){
+                        showError(last, 'Please type only alphabate..');
+                      }
+                      else if (!isBetween(username.length, min, max)) {
+                          showError(last, `Last name must be between ${min} and ${max} characters.`)
+                      } 
+                      else {
+                          showSuccess(last);
+                          valid = true;
+                      }
+                      return valid;
+                      };
+
+              const checkUsername2 = () => {
+
+                        let valid = false;
+
+                        const min = 2,
+                            max = 15;
+
+                        const username = mother.value.trim();
+
+                        if (!isRequired(username)) {
+                            showError(mother, 'Mother name cannot be blank.');
+                        } 
+                        if(!username.match(letter)){
+                          showError(mother, 'Please type only alphabate..');
+                        }
+                        else if (!isBetween(username.length, min, max)) {
+                            showError(mother, `Mother name must be between ${min} and ${max} characters.`)
+                        } 
+                        else {
+                            showSuccess(mother);
+                            valid = true;
+                        }
+                        return valid;
+                        };
+
+                    const checkUsername3 = () => {
+
+                            let valid = false;
+
+                            const min = 2,
+                                max = 15;
+
+                            const username = father.value.trim();
+
+                            if (!isRequired(username)) {
+                                showError(father, 'Father name cannot be blank.');
+                            } 
+                            if(!username.match(letter)){
+                              showError(father, 'Please type only alphabate..');
+                            }
+                            else if (!isBetween(username.length, min, max)) {
+                                showError(father, `Father name must be between ${min} and ${max} characters.`)
+                            } 
+                            else {
+                                showSuccess(father);
+                                valid = true;
+                            }
+                            return valid;
+                        };
+
+                        const checkUsername4 = () => {
+
+                              let valid = false;
+
+                              const username = add.value.trim();
+
+                              if (!isRequired(username)) {
+                                  showError(add, 'Address cannot be blank.');
+                              } 
+                             
+                              else {
+                                  showSuccess(add);
+                                  valid = true;
+                              }
+                              return valid;
+                              };
+                        
+
+                              const checkUsername5 = () => {
+
+                                    let valid = false;
+
+                                    
+                                    const username = pincode.value.trim();
+
+                                    if (!isRequired(username)) {
+                                        showError(pincode, 'Pincode cannot be blank.');
+                                    } 
+                                    
+                                    if(username.length!=6) {
+                                        showError(pincode, `Pincode number is six digit.`)
+                                    } 
+                                    else {
+                                        showSuccess(pincode);
+                                        valid = true;
+                                    }
+                                    return valid;
+                                    };
+
+                          const checkUsername6 = () => {
+
+                                let valid = false;
+
+
+                                const username = num.value.trim();
+
+                                if (!isRequired(username)) {
+                                    showError(num, 'Pincode cannot be blank.');
+                                } 
+
+                                if(username.length!=10) {
+                                    showError(num, `Pincode number is ten.`)
+                                } 
+                                else {
+                                    showSuccess(num);
+                                    valid = true;
+                                }
+                                return valid;
+                                };
+                                const checkUsername7 = () => {
+
+                                    let valid = false;
+
+                                    const username = birth.value.trim();
+
+                                    if (!isRequired(username)) {
+                                        showError(birth, 'Birthdate cannot be blank.');
+                                    } 
+
+                                    else {
+                                        showSuccess(birth);
+                                        valid = true;
+                                    }
+                                    return valid;
+                                    };
+
+                const checkEmail = () => {
+                    let valid = false;
+                    
+                    const email = emai.value.trim();
+                    if (!isRequired(email)) {
+                        showError(emai, 'Email cannot be blank.');
+                    } else if (!isEmailValid(email)) {
+                        showError(emai, 'Email is not valid.')
+                    } else {
+                        showSuccess(emai);
+                        valid = true;
+                    }
+                    return valid;
+                };
+
+               
+
+                
+
+                const isEmailValid = (emai) => {
+                    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    return re.test(emai);
+                };
+
+                const isPasswordSecure = (password) => {
+                    const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+                    return re.test(password);
+                };
+
+                const isRequired = value => value === '' ? false : true;
+                const isBetween = (length, min, max) => length < min || length > max ? false : true;
+
+
+
+
+                const showError = (input, message) => {
+                    // get the form-field element
+                    const formField = input.parentElement;
+                    // add the error class
+                    formField.classList.remove('success');
+                    formField.classList.add('error');
+
+                    // show the error message
+                    const error = formField.querySelector('small');
+                    error.textContent = message;
+                };
+
+                const showSuccess = (input) => {
+                    // get the form-field element
+                    const formField = input.parentElement;
+
+                    // remove the error class
+                    formField.classList.remove('error');
+                    formField.classList.add('success');
+
+                    // hide the error message
+                    const error = formField.querySelector('small');
+                    error.textContent = '';
+                }
+
+
+                form.addEventListener('submit', function (e) {
+                    // prevent the form from submitting
+                    e.preventDefault();
+
+
+                    // validate forms
+                    let isUsernameValid = checkUsername(),
+                        isUsernameValid1 = checkUsername1(),
+                        isUsernameValid2 = checkUsername2(),
+                        isUsernameValid3 = checkUsername3(),
+                        isUsernameValid4 = checkUsername4(),
+                        isUsernameValid5 = checkUsername5(),
+                        isUsernameValid6 = checkUsername6(),
+                        isUsernameValid7 = checkUsername7(),
+                        isEmailValid = checkEmail(),
+                        isPasswordValid = checkPassword(),
+                        isConfirmPasswordValid = checkConfirmPassword();
+
+                    let isFormValid = isUsernameValid &&
+                         isUsernameValid1 &&
+                         isUsernameValid2 &&
+                         isUsernameValid3 &&
+                         isUsernameValid4 &&
+                         isUsernameValid5 &&
+                         isUsernameValid6 &&
+                         isUsernameValid7 &&
+                        isEmailValid &&
+                        isPasswordValid &&
+                        isConfirmPasswordValid;
+
+                    // submit to the server if the form is valid
+                    if (isFormValid) {
+
+                    }
+                });
+
+
+                const debounce = (fn, delay = 500) => {
+                    let timeoutId;
+                    return (...args) => {
+                        // cancel the previous timer
+                        if (timeoutId) {
+                            clearTimeout(timeoutId);
+                        }
+                        // setup a new timer
+                        timeoutId = setTimeout(() => {
+                            fn.apply(null, args)
+                        }, delay);
+                    };
+                };
+                // 
+                form.addEventListener('input', debounce(function (e) {
+                    switch (e.target.id) {
+                        case 'name':
+                            checkUsername();
+                            break;
+                            case 'lname':
+                            checkUsername1();
+                            break;
+                            case 'mname':
+                            checkUsername2();
+                            break;
+                            case 'fname':
+                            checkUsername3();
+                            break;
+                            case 'address':
+                            checkUsername4();
+                            break;
+                            case 'pin':
+                            checkUsername5();
+                            break;
+                            case 'mobile':
+                            checkUsername6();
+                            break;
+                            case 'date':
+                            checkUsername7();
+                            break;
+
+                        case 'email':
+                            checkEmail();
+                            break;
+                        case 'password':
+                            checkPassword();
+                            break;
+                        case 'confirm-password':
+                            checkConfirmPassword();
+                            break;
+                    }
+                }));
+
+                function resetForm(){
+      document.getElementById("form").reset();
+    }
+                </script>
+                            
+
